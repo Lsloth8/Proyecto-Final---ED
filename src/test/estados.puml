@@ -1,0 +1,8 @@
+@startuml
+[*] --> Pendiente
+Pendiente --> Asignado : Asignar Personal
+Asignado --> Completado : Finalizar Turno
+Asignado --> Cancelado : Eliminar Turno
+Completado --> [*]
+Cancelado --> [*]
+@enduml

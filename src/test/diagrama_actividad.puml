@@ -1,0 +1,37 @@
+```
+@startuml
+start
+
+:Iniciar aplicación;
+:Seleccionar "Crear Turno" en pantalla principal;
+
+:Mostrar formulario de turno;
+
+:Ingresar fecha;
+:Ingresar hora de inicio;
+:Ingresar duración;
+:Seleccionar personal;
+
+if (¿Datos válidos?) then (sí)
+    :Validar disponibilidad del personal;
+    if (¿Personal disponible?) then (sí)
+        :Validar conflictos de horario;
+        if (¿Sin conflictos?) then (sí)
+            :Guardar turno en la base de datos;
+            :Mostrar mensaje de éxito;
+            :Actualizar calendario en pantalla principal;
+            stop
+        else (no)
+            :Mostrar mensaje de error: "Conflicto de horario";
+            :Volver a formulario;
+        endif
+    else (no)
+        :Mostrar mensaje de error: "Personal no disponible";
+        :Volver a formulario;
+    endif
+else (no)
+    :Mostrar mensaje de error: "Datos inválidos";
+    :Volver a formulario;
+endif
+
+@enduml

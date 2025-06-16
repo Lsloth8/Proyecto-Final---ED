@@ -1,0 +1,13 @@
+@startuml
+actor Administrador
+actor Personal
+
+Administrador --> (Crear Turno)
+Administrador --> (Modificar Turno)
+Administrador --> (Eliminar Turno)
+Administrador --> (Gestionar Personal)
+Administrador --> (Generar Informe)
+Personal --> (Consultar Turnos)
+
+(Consultar Turnos) .> (Visualizar Calendario) : <<extend>>
+@enduml

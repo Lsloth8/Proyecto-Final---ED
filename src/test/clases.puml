@@ -1,0 +1,41 @@
+@startuml
+class Horario {
+  -id: int
+  -fecha: LocalDate
+  -startTime: LocalTime
+  -duracion: int
+  -personal: personal
+  +getId(): int
+  +setDate(date: LocalDate): void
+  +getPersonal(): Personal
+}
+
+class Personal {
+  -id: int
+  -nombre: String
+  -rol: String
+  -disponibilidad: List<LocalDateTime>
+  +getNombre(): String
+  +setRol(rol: String): void
+}
+
+class Administrador {
+  -horarios: List<Horario>
+  -PersonalList: List<Personal>
+  +crearHorario(horario: Horario): void
+  +borrarHorario(id: int): void
+  +generarReporte(startDate: LocalDate, endDate: LocalDate): Reporte
+}
+
+class Reporte {
+  -startDate: LocalDate
+  -endDate: LocalDate
+  -Horario: List<Personal>
+  +exportToPDF(): void
+}
+
+Horario "1" --> "1" Personal
+Administrador "1" --> "*" Horario
+Administrador "1" --> "*" Personal
+Reporte "1" --> "*" Horario
+@enduml

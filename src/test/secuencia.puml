@@ -1,0 +1,20 @@
+@startuml
+actor Administrador
+participant "GUI" as GUI
+participant "Administrador" as Ad
+participant "Horario" as H
+participant "Personal" as Ps
+participant "Database" as DB
+
+Administrador -> GUI: Selecciona "Crear Turno"
+GUI -> Ad: crearHorario
+Ad -> H: new Turno
+Ad -> Ps: Buscar Personal disponible
+Ps --> Ad: Personal disponible
+Ad -> Ps: Seleccionar Personal
+H --> Ad: Horario
+Ad -> DB: Guardar Horario
+DB --> Ad: Guardado
+Ad --> GUI: Confirmado
+GUI --> Administrador: Muestra confirmación
+@enduml

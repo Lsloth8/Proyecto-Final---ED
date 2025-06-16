@@ -1,0 +1,21 @@
+
+@startuml
+start
+
+:Iniciar aplicación;
+:Seleccionar turno en calendario;
+:Seleccionar "Eliminar Turno";
+
+:Mostrar confirmación de eliminación;
+
+if (¿Confirmar eliminación?) then (sí)
+    :Eliminar turno de la base de datos;
+    :Mostrar mensaje de éxito;
+    :Actualizar calendario en pantalla principal;
+    stop
+else (no)
+    :Cancelar operación;
+    stop
+endif
+
+@enduml
